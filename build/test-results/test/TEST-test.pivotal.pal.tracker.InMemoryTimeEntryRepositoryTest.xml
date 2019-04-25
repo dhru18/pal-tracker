@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="test.pivotal.pal.tracker.InMemoryTimeEntryRepositoryTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2019-04-25T06:15:04" hostname="D-441001908" time="0.181">
+  <properties/>
+  <testcase name="create" classname="test.pivotal.pal.tracker.InMemoryTimeEntryRepositoryTest" time="0.126"/>
+  <testcase name="delete" classname="test.pivotal.pal.tracker.InMemoryTimeEntryRepositoryTest" time="0.043"/>
+  <testcase name="find_MissingEntry" classname="test.pivotal.pal.tracker.InMemoryTimeEntryRepositoryTest" time="0.002"/>
+  <testcase name="update" classname="test.pivotal.pal.tracker.InMemoryTimeEntryRepositoryTest" time="0.0"/>
+  <testcase name="deleteKeepsTrackOfLatestIdProperly" classname="test.pivotal.pal.tracker.InMemoryTimeEntryRepositoryTest" time="0.004"/>
+  <testcase name="find" classname="test.pivotal.pal.tracker.InMemoryTimeEntryRepositoryTest" time="0.001"/>
+  <testcase name="list" classname="test.pivotal.pal.tracker.InMemoryTimeEntryRepositoryTest" time="0.001"/>
+  <testcase name="update_MissingEntry" classname="test.pivotal.pal.tracker.InMemoryTimeEntryRepositoryTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
