@@ -1,0 +1,97 @@
+DH20078171@D-441001908 MINGW64 /d/workspace/pal-tracker/pal-tracker (master)
+$ fit push
+bash: fit: command not found
+
+DH20078171@D-441001908 MINGW64 /d/workspace/pal-tracker/pal-tracker (master)
+$ git push
+Username for 'https://github.com': dhru18
+Enumerating objects: 168, done.
+Counting objects: 100% (168/168), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (75/75), done.
+Writing objects: 100% (103/103), 215.12 KiB | 631.00 KiB/s, done.
+Total 103 (delta 24), reused 8 (delta 0)
+remote: Resolving deltas: 100% (24/24), completed with 18 local objects.
+To https://github.com/dhru18/pal-tracker.git
+   2864392..a055ef0  master -> master
+
+DH20078171@D-441001908 MINGW64 /d/workspace/pal-tracker/pal-tracker (master)
+$ curl -i localhost:8080/time-entries
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100     2    0     2    0     0      9      0 --:--:-- --:--:-- --:--:--     9HTTP/1.1 200
+Content-Type: application/json;charset=UTF-8
+Transfer-Encoding: chunked
+Date: Thu, 25 Apr 2019 06:25:44 GMT
+
+[]
+
+DH20078171@D-441001908 MINGW64 /d/workspace/pal-tracker/pal-tracker (master)
+$ curl -i -XPOST -H"Content-Type: application/json" localhost:8080/time-entries -d"{\"projectId\": 1, \"userId\": 2, \"date\": \"2019-01-01\", \"hours\": 8}"
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   126    0    63  100    63    366    366 --:--:-- --:--:-- --:--:--   732HTTP/1.1 201
+Content-Type: application/json;charset=UTF-8
+Transfer-Encoding: chunked
+Date: Thu, 25 Apr 2019 06:26:01 GMT
+
+{"id":1,"projectId":1,"userId":2,"date":"2019-01-01","hours":8}
+
+DH20078171@D-441001908 MINGW64 /d/workspace/pal-tracker/pal-tracker (master)
+$ curl -i localhost:8080/time-entries/${TIME_ENTRY_ID}
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100    65    0    65    0     0   2031      0 --:--:-- --:--:-- --:--:--  2031HTTP/1.1 200
+Content-Type: application/json;charset=UTF-8
+Transfer-Encoding: chunked
+Date: Thu, 25 Apr 2019 06:26:07 GMT
+
+[{"id":1,"projectId":1,"userId":2,"date":"2019-01-01","hours":8}]
+
+DH20078171@D-441001908 MINGW64 /d/workspace/pal-tracker/pal-tracker (master)
+$ curl -i -XPUT -H"Content-Type: application/json" localhost:8080/time-entries/${TIME_ENTRY_ID} -d"{\"projectId\": 88, \"userId\": 99, \"date\": \"2019-01-01\", \"hours\": 8}"
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   222    0   157  100    65   2492   1031 --:--:-- --:--:-- --:--:--  3523HTTP/1.1 405
+Allow: GET, POST
+Content-Type: application/json;charset=UTF-8
+Transfer-Encoding: chunked
+Date: Thu, 25 Apr 2019 06:26:12 GMT
+
+{"timestamp":"2019-04-25T06:26:12.829+0000","status":405,"error":"Method Not Allowed","message":"Request method 'PUT' not supported","path":"/time-entries/"}
+
+DH20078171@D-441001908 MINGW64 /d/workspace/pal-tracker/pal-tracker (master)
+$ curl -i -XDELETE -H"Content-Type: application/json" localhost:8080/time-entries/${TIME_ENTRY_ID}
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   160    0   160    0     0   5000      0 --:--:-- --:--:-- --:--:--  5000HTTP/1.1 405
+Allow: GET, POST
+Content-Type: application/json;charset=UTF-8
+Transfer-Encoding: chunked
+Date: Thu, 25 Apr 2019 06:26:17 GMT
+
+{"timestamp":"2019-04-25T06:26:17.839+0000","status":405,"error":"Method Not Allowed","message":"Request method 'DELETE' not supported","path":"/time-entries/"}
+
+DH20078171@D-441001908 MINGW64 /d/workspace/assignment-submission
+$ gradle cloudNativeDeveloperRest -PserverUrl=https://pal-tracker-dhrumilshah-balanced-gecko.apps.dev.pcf-aws.com
+Starting a Gradle Daemon, 1 busy and 1 incompatible and 3 stopped Daemons could not be reused, use --status for details
+
+> Task :cloudNativeDeveloperRest
+
+Starting assignment...
+
+GET https://pal-tracker-dhrumilshah-balanced-gecko.apps.dev.pcf-aws.com/time-entries
+POST https://pal-tracker-dhrumilshah-balanced-gecko.apps.dev.pcf-aws.com/time-entries
+GET https://pal-tracker-dhrumilshah-balanced-gecko.apps.dev.pcf-aws.com/time-entries/1
+PUT https://pal-tracker-dhrumilshah-balanced-gecko.apps.dev.pcf-aws.com/time-entries/1
+GET https://pal-tracker-dhrumilshah-balanced-gecko.apps.dev.pcf-aws.com/time-entries/1
+DELETE https://pal-tracker-dhrumilshah-balanced-gecko.apps.dev.pcf-aws.com/time-entries/1
+GET https://pal-tracker-dhrumilshah-balanced-gecko.apps.dev.pcf-aws.com/time-entries/1
+
+Assignment was successful.
+
+
+BUILD SUCCESSFUL in 1m 19s
+1 actionable task: 1 executed
+
+DH20078171@D-441001908 MINGW64 /d/workspace/assignment-submission
